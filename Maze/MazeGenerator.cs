@@ -47,7 +47,10 @@ public class MazeGenerator
     {
         var vmaze = maze;
         mazeSet.generator.Generate(vmaze);
-
+        if (mazeSet.braiding != null)
+        {
+            vmaze.Braid(mazeSet.braiding);
+        }
         return vmaze;
         
     }

@@ -9,20 +9,20 @@ using System.Text.Json.Serialization;
 
 class ExportFormat
 {
-    [JsonPropertyName("Cells")]
+    [JsonPropertyName("cells")]
     public List<Cell> cells { get; set; } = new List<Cell>();
     public class Cell
     {
-        [JsonPropertyName("GridPosition")]
+        [JsonPropertyName("gridPosition")]
         public Tuple<int, int> gridPosition { get; set; }
 
-        [JsonPropertyName("Center")]
+        [JsonPropertyName("center")]
         public Tuple<double, double> center { get; set; }
 
-        [JsonPropertyName("Pillows")]
+        [JsonPropertyName("pillows")]
         public List<Tuple<string, double, double>> pillows { get; set; } = new List<Tuple<string, double, double>>();
 
-        [JsonPropertyName("Sides")]
-        public List<Tuple<string, string>> sides { get; set; } = new List<Tuple<string, string>>();
+        [JsonPropertyName("sides")]
+        public List<Tuple<string, string, string>> sides { get; set; } = new List<Tuple<string, string, string>>();
     }
 }

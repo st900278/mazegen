@@ -104,15 +104,15 @@ public class DeltaMaze : BaseShapedMaze<DeltaCell>
             Tuple<string, double, double> topPoint = Tuple.Create("none", 0.0, 0.0), rightPoint = Tuple.Create("none", 0.0, 0.0), leftPoint = Tuple.Create("none", 0.0, 0.0);
             if (((cell.position as Position2D).x + (cell.position as Position2D).y) % 2 == 1)
             {
-                topPoint = Tuple.Create("top", (cell.position as Position2D).x * 0.5 + 0.5, -(cell.position as Position2D).y * Math.Sqrt(3) / 2);
-                leftPoint = Tuple.Create("left", (cell.position as Position2D).x * 0.5, -(cell.position as Position2D).y * Math.Sqrt(3) / 2 - Math.Sqrt(3) / 2);
-                rightPoint = Tuple.Create("right", (cell.position as Position2D).x * 0.5 + 1, -(cell.position as Position2D).y * Math.Sqrt(3) / 2 - Math.Sqrt(3) / 2);
+                topPoint = Tuple.Create("top", ((cell.position as Position2D).x * 0.5 + 0.5) * jsonOutput.sideLength, (-(cell.position as Position2D).y * Math.Sqrt(3) / 2) * jsonOutput.sideLength);
+                leftPoint = Tuple.Create("left", ((cell.position as Position2D).x * 0.5) * jsonOutput.sideLength, (-(cell.position as Position2D).y * Math.Sqrt(3) / 2 - Math.Sqrt(3) / 2) * jsonOutput.sideLength);
+                rightPoint = Tuple.Create("right", ((cell.position as Position2D).x * 0.5 + 1) * jsonOutput.sideLength, (-(cell.position as Position2D).y * Math.Sqrt(3) / 2 - Math.Sqrt(3) / 2) * jsonOutput.sideLength);
             }
             else
             {
-                topPoint = Tuple.Create("top", (cell.position as Position2D).x * 0.5 + 0.5, -(cell.position as Position2D).y * Math.Sqrt(3) / 2 - Math.Sqrt(3) / 2);
-                leftPoint = Tuple.Create("left", (cell.position as Position2D).x * 0.5, -(cell.position as Position2D).y * Math.Sqrt(3) / 2 - Math.Sqrt(3) / 2);
-                rightPoint = Tuple.Create("right", (cell.position as Position2D).x * 0.5 + 1, -(cell.position as Position2D).y * Math.Sqrt(3) / 2 - Math.Sqrt(3) / 2);
+                topPoint = Tuple.Create("top", ((cell.position as Position2D).x * 0.5 + 0.5) * jsonOutput.sideLength, (-(cell.position as Position2D).y * Math.Sqrt(3) / 2 - Math.Sqrt(3) / 2) * jsonOutput.sideLength);
+                leftPoint = Tuple.Create("left", ((cell.position as Position2D).x * 0.5) * jsonOutput.sideLength, (-(cell.position as Position2D).y * Math.Sqrt(3) / 2) * jsonOutput.sideLength);
+                rightPoint = Tuple.Create("right", ((cell.position as Position2D).x * 0.5 + 1) * jsonOutput.sideLength, (-(cell.position as Position2D).y * Math.Sqrt(3) / 2) * jsonOutput.sideLength);
             }
             tempCell.pillows.Add(topPoint);
             tempCell.pillows.Add(rightPoint);
@@ -130,13 +130,13 @@ public class DeltaMaze : BaseShapedMaze<DeltaCell>
                 switch (side.symbol)
                 {
                     case "E":
-                        tempCell.sides.Add(Tuple.Create("top", "right"));
+                        tempCell.sides.Add(Tuple.Create("E", "top", "right"));
                         break;
                     case "W":
-                        tempCell.sides.Add(Tuple.Create("top", "left"));
+                        tempCell.sides.Add(Tuple.Create("W", "top", "left"));
                         break;
                     case "B":
-                        tempCell.sides.Add(Tuple.Create("left", "right"));
+                        tempCell.sides.Add(Tuple.Create("B", "left", "right"));
                         break;
                 }
             });
